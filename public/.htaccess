@@ -1,0 +1,19 @@
+# Válido somente para a pasta deste projeto (subdomínio rendaextra).
+Options -Indexes
+
+# Bloqueia arquivos ocultos e de desenvolvimento
+<FilesMatch "^\.|\.(md|bak|zip|log|py)$">
+  Require all denied
+</FilesMatch>
+
+# HTML, JS e CSS: sempre revalidar (trocas de ofertas aparecem na hora)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(svg|png|webp|jpg)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
