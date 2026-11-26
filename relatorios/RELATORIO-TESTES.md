@@ -33,11 +33,23 @@ Alterado, conforme o briefing:
 - `privacidade.html` abre sem erros.
 - QR: decodificado por software (OpenCV) no PNG do código e na arte renderizada a 300 dpi e reduzida a ~90 dpi → resultado exato: `https://rendaextra.nexusjpc.com.br/?utm_source=ponto_onibus&utm_medium=qr&utm_campaign=renda_extra`. QR versão 8, correção Q (~25%), margem de 4 módulos, preto sobre branco, sem logo. Na arte 10x15 cm o código tem ~6 cm (≈1,2 mm por módulo).
 
+## Verificação em produção — 26/11/2026
+
+Publicado pela proprietária em `https://rendaextra.nexusjpc.com.br/` (pasta public_html do subdomínio). Verificado a partir deste ambiente:
+- URL limpa e URL do QR: HTTP 200, HTTPS ativo (servidor `hcdn`).
+- `index.html`, `privacidade.html`, `offers.js`, `config.js`, `app.js`, `styles.css`: **idênticos byte a byte** aos do repositório. Imagens 200.
+- `.htaccess` protegido (403). Cabeçalhos ativos: `Cache-Control: no-cache`, `X-Content-Type-Options`, `Referrer-Policy`.
+- Chromium real em 360/390/768 px: sem rolagem horizontal, 0 erros de console, 3 ofertas com links exatos; UTMs preservados na URL.
+- Sem ID GA4: aviso de cookies oculto (esperado).
+- QR decodificado (`material/renda-extra-ponto-qr.png`) → URL do QR → HTTP 200.
+- Links de afiliado: os 3 redirecionam para o rastreamento de afiliado da Kiwify com `ref` igual ao `afid` e `product_id` distintos (links ativos). Nome do produto e preço não puderam ser lidos daqui.
+- `nexusjpc.com.br` e `www.nexusjpc.com.br`: HTTP 200 (seguem no ar).
+
 ## Não realizado (sem acesso ou sem evidência)
 
 - Lighthouse e teste em rede móvel real: não executados.
 - Conferência dos links, preços e afiliação na Kiwify.
-- Deploy na Hostinger, HTTPS, verificação de URL pública e dos outros sites.
+- Verificação dos demais sites da conta além de nexusjpc.com.br (lista não informada).
 - Teste com GA4 real e escaneamento físico com Android/iPhone.
 
 ## Pendências da proprietária (em ordem)
