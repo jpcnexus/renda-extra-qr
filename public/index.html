@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renda Extra no Ponto</title>
+  <meta name="description" content="Conheça três treinamentos para aprender habilidades digitais e explorar oportunidades de renda extra pelo celular ou computador.">
+  <meta property="og:title" content="Renda Extra no Ponto">
+  <meta property="og:description" content="Três treinamentos para aprender sobre renda extra pela internet.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#FFF3E3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFF3E3'/%3E%3Cpath d='M20 16h24v32H20z' fill='%23F6B73C' stroke='%233A2218' stroke-width='3'/%3E%3Cpath d='M27 24h10M27 31h10M30 41h4' stroke='%233A2218' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <p class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4V7Zm0 0 8 4 8-4M12 11v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg> Renda Extra no Ponto</p>
+
+    <header class="hero">
+      <h1>Quer conhecer novas possibilidades de renda extra?</h1>
+      <p>Conheça treinamentos para aprender habilidades digitais e explorar oportunidades usando seu celular ou computador, conforme os requisitos de cada curso.</p>
+      <a class="btn" href="#treinamentos">Conhecer os treinamentos</a>
+    </header>
+
+    <section id="treinamentos" aria-labelledby="t-treinamentos">
+      <h2 id="t-treinamentos">Os treinamentos</h2>
+      <div class="offers" id="offer-list">
+        <noscript><p class="notice">Ative o JavaScript do navegador para ver os treinamentos.</p></noscript>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="t-faq">
+      <h2 id="t-faq">Perguntas rápidas</h2>
+      <details>
+        <summary>É gratuito?</summary>
+        <p>Esta página é gratuita e não pede cadastro. Os treinamentos são pagos e cada um mostra preço e condições na própria página de compra.</p>
+      </details>
+      <details>
+        <summary>Preciso de experiência?</summary>
+        <p>Cada treinamento informa para quem é indicado e o que é necessário. Confira os requisitos na página do curso antes de comprar.</p>
+      </details>
+      <details>
+        <summary>Quem oferece os treinamentos?</summary>
+        <p>Os cursos são de produtores independentes e a venda é feita pela plataforma Kiwify. A Nexus JPC apenas apresenta os treinamentos como afiliada.</p>
+      </details>
+      <details>
+        <summary>Há garantia de renda?</summary>
+        <p>Não. Resultados financeiros não são garantidos e dependem de cada pessoa. Consulte as condições de cada treinamento antes de comprar.</p>
+      </details>
+    </section>
+
+    <section aria-label="Aviso de afiliação">
+      <p class="notice">Esta página apresenta treinamentos de terceiros e contém links de afiliados. Podemos receber comissão por compras feitas por esses links. Resultados financeiros não são garantidos. Consulte as condições do treinamento antes de comprar.</p>
+    </section>
+
+    <footer>
+      <p>Um projeto da <strong>Nexus JPC — Soluções Digitais</strong>.</p>
+      <p>Shopee, Canva e Kiwify são marcas de seus respectivos donos, sem vínculo com esta página.</p>
+      <nav aria-label="Links institucionais">
+        <a id="institucional" href="#" hidden>Nexus JPC</a>
+        <a href="privacidade.html">Privacidade</a>
+        <button type="button" class="linklike" data-open-consent hidden>Preferências de cookies</button>
+      </nav>
+    </footer>
+  </main>
+
+  <div class="consent" id="consent" role="region" aria-label="Preferências de privacidade" hidden>
+    <div class="consent-inner">
+      <p>Usamos o Google Analytics apenas para contar visitas e cliques nos cursos, sem dados pessoais. Você aceita? A página funciona normalmente se recusar. <a href="privacidade.html">Saiba mais</a>.</p>
+      <div class="consent-actions">
+        <button type="button" class="decline" data-consent="denied">Recusar</button>
+        <button type="button" class="accept" data-consent="granted">Aceitar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="offers.js"></script>
+  <script src="app.js"></script>
+  <script>
+    (function () {
+      var u = (window.SITE_CONFIG || {}).institucionalUrl, a = document.getElementById('institucional');
+      if (u && /^https:\/\//.test(u)) { a.href = u; a.hidden = false; }
+    })();
+  </script>
+</body>
+</html>
