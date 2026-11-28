@@ -38,23 +38,46 @@
 
   if (list) {
     list.textContent = '';
-    offers.forEach((o) => {
+    const jump = document.getElementById('offer-jump');
+    offers.forEach((o, idx) => {
       const titleId = 'title-' + o.id;
-      const steps = (o.passos || []).slice(0, 3).map((p) => el('li', { text: p }));
+      const showPrice = o.precoConfirmado && o.preco;
+      const items = (o.itens || []).slice(0, 3).map((p) => el('li', { text: p }));
+      const priceBox = showPrice ? el('div', { class: 'price-box' }, [
+        o.precoDe ? el('span', { class: 'price-from' }, [document.createTextNode('de '), el('s', { text: o.precoDe })]) : null,
+        el('span', { class: 'price' }, [o.precoDe ? el('small', { text: 'por ' }) : null, document.createTextNode(o.preco)]),
+        o.parcelas ? el('span', { class: 'price-split', text: o.parcelas }) : null
+      ]) : null;
+      const trust = ['Acesso imediato', o.garantia ? 'Garantia de 7 dias' : null, 'Compra segura pela Kiwify']
+        .filter(Boolean).join(' • ');
       const card = el('article', { class: 'offer', id: o.id, 'aria-labelledby': titleId }, [
-        o.imagem ? el('img', { class: 'cover', src: o.imagem, alt: '', width: '400', height: '225', loading: 'lazy', decoding: 'async' }) : null,
-        el('span', { class: 'tag', text: o.perfil || '' }),
+        o.imagem ? el('div', { class: 'cover' }, [
+          el('img', { src: o.imagem, alt: 'Material oficial do curso ' + o.nome, decoding: 'async' })
+        ]) : null,
+        o.selo ? el('span', { class: 'badge', text: o.selo }) : null,
         el('h3', { id: titleId, text: o.nome }),
-        el('p', { class: 'description', text: o.descricao || '' }),
-        steps.length ? el('ol', { class: 'steps', 'aria-label': 'Como funciona' }, steps) : null,
-        o.precoConfirmado && o.preco ? el('p', { class: 'price', text: o.preco }) : null,
+        o.gancho ? el('p', { class: 'hook', text: o.gancho }) : null,
+        items.length ? el('ul', { class: 'items' }, items) : null,
+        priceBox,
         el('a', {
           class: 'cta', href: o.link, target: '_blank', rel: 'noopener sponsored',
-          'data-offer-id': o.id, 'data-offer-name': o.nome, text: o.cta || 'Conhecer o treinamento'
-        })
+          'data-offer-id': o.id, 'data-offer-name': o.nome, text: (o.cta || 'Conhecer o curso') + ' →'
+        }),
+        el('p', { class: 'trust', text: trust })
       ]);
       list.appendChild(card);
+      if (jump) {
+        jump.appendChild(el('a', { href: '#' + o.id }, [
+          el('span', { text: o.nome.split(' — ')[0] }),
+          showPrice ? el('strong', { text: o.preco }) : null
+        ]));
+      }
     });
+    const checked = document.getElementById('checked-at');
+    if (checked && window.OFFERS_CHECKED_AT) {
+      checked.textContent = 'Preços conferidos nas páginas oficiais em ' + window.OFFERS_CHECKED_AT +
+        '. O valor final é sempre o mostrado na página de compra.';
+    }
     if (!offers.length) list.appendChild(el('p', { text: 'Novos treinamentos em breve.' }));
   }
 

@@ -2,7 +2,7 @@
 const { chromium } = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..', 'public');
-const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml' };
+const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.webp': 'image/webp' };
 const srv = http.createServer((q, r) => {
   let p = decodeURIComponent(q.url.split('?')[0]); if (p.endsWith('/')) p += 'index.html';
   const f = path.join(ROOT, p);
@@ -12,8 +12,8 @@ const srv = http.createServer((q, r) => {
 const BASE = 'http://localhost:8765/';
 const QRQ = '?utm_source=ponto_onibus&utm_medium=qr&utm_campaign=renda_extra';
 const EXPECTED = {
-  canva: 'https://kiwify.app/1SMfVeQ?afid=vU2PrZbU',
-  pva: 'https://kiwify.app/FrsqcHD?afid=7AAd8oEW',
+  mov: 'https://kiwify.app/cdH39sl?afid=F64hqxZa',
+  videos_ia: 'https://kiwify.app/m7fQ44k?afid=oQhdXQjt',
   shopee: 'https://kiwify.app/m0mn4dS?afid=ANrYBM87'
 };
 let fails = 0; const ok = (c, m) => { console.log((c ? 'PASSOU ' : 'FALHOU ') + m); if (!c) fails++; };
@@ -44,6 +44,8 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'PASSOU ' : 'FALHOU ') + 
       ok(sw <= w, `${w}px ${q ? 'com UTM' : 'sem UTM'}: sem rolagem horizontal (scrollWidth ${sw})`);
       ok(links.length === 3 && links.every(([id, h, rel]) => EXPECTED[id] === h && rel.includes('sponsored') && rel.includes('noopener')),
         `${w}px: 3 ofertas com links/afid exatos e rel="noopener sponsored" (${links.map(l => l[0]).join(',')})`);
+      const imgs = await p.$$eval('.cover img', a => a.map(i => i.complete && i.naturalWidth > 0));
+      ok(imgs.length === 3 && imgs.every(Boolean) || w !== 390, `${w}px: imagens oficiais carregadas`);
       ok(errors.length === 0, `${w}px: sem erros de console ${errors.join(' | ')}`);
       ok(gtm.length === 0, `${w}px: sem GA4 configurado, nenhuma requisição ao Google`);
       ok(await p.isHidden('#consent'), `${w}px: sem GA4 configurado, aviso de cookies oculto`);
@@ -58,7 +60,7 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'PASSOU ' : 'FALHOU ') + 
     ok(await p.isVisible('#consent'), 'GA4: aviso de consentimento aparece');
     ok(gtm.length === 0, 'GA4: tag não carrega antes do consentimento');
     await p.click('[data-consent="denied"]');
-    await p.click('a[data-offer-id="pva"]').catch(() => {});
+    await p.click('a[data-offer-id="mov"]').catch(() => {});
     await p.waitForTimeout(300);
     ok(gtm.length === 0, 'GA4: recusa não carrega tag analítico');
     ok(!(await p.evaluate(() => document.cookie)).includes('_ga'), 'GA4: recusa sem cookies _ga');
