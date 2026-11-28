@@ -40,6 +40,7 @@ node ferramentas/testar.js
 
 - [DEPLOY-HOSTINGER.md](DEPLOY-HOSTINGER.md) — publicação isolada, backup e rollback.
 - [ATUALIZAR-OFERTAS.md](ATUALIZAR-OFERTAS.md) — trocar links, preços ou cursos sem reimprimir o QR.
+- [TUTORIAL-ANALYTICS.md](TUTORIAL-ANALYTICS.md) — criar o Google Analytics passo a passo e ler os números.
 - [relatorios/RELATORIO-TESTES.md](relatorios/RELATORIO-TESTES.md) — testes realizados e pendências reais.
 
 ## URL do QR (não alterar depois de imprimir)

@@ -26,7 +26,15 @@ Trocar curso, link ou preço **não exige novo QR Code**. Edite somente `public/
 - O `.htaccess` manda o navegador revalidar `offers.js`, então a troca aparece na hora. Se a Hostinger tiver cache (LiteSpeed/CDN) ligado, limpe o cache do subdomínio no hPanel.
 - Se mudar o texto `nome`, os relatórios do GA4 passam a mostrar o novo `offer_name`; o `offer_id` continua o mesmo.
 
-## Atenção aos preços promocionais
+## Preços promocionais (campo `promo`)
 
-Em 28/11/2026 o Método Lucrando com a Shopee anunciava "oferta Black Friday, válida somente hoje" (de R$ 149,99 por R$ 47).
-Confira o preço com frequência. Se voltar a R$ 149,99, atualize `preco`, `precoDe` e `parcelas` (ou use `precoConfirmado: false`).
+Para uma promoção com data para acabar, preencha `promo` com o preço promocional e a data final:
+
+```js
+promo: { selo: 'Black Friday', preco: 'R$ 47', precoDe: 'R$ 149,99', parcelas: 'ou 9x de R$ 6,18', ate: '2026-11-30T23:59:00-03:00' },
+```
+
+Até `ate` (horário de Brasília) a página mostra o preço promocional; depois volta sozinha ao `preco` normal, sem precisar publicar nada.
+Se a promoção acabar antes, apague a linha `promo` (ou mude a data) e envie `offers.js`.
+
+Hoje: Método Lucrando com a Shopee em Black Friday (R$ 47) até 30/11/2026 23h59; depois, R$ 149,99.

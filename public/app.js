@@ -25,6 +25,15 @@
   const list = document.getElementById('offer-list');
   const offers = (window.OFFERS || [])
     .filter((o) => o && o.ativo && /^https:\/\//.test(o.link || ''))
+    .map((o) => {
+      const p = o.promo;
+      const end = p && Date.parse(p.ate);
+      if (!p || !end || Date.now() > end) return o;
+      return Object.assign({}, o, {
+        preco: p.preco || o.preco, precoDe: p.precoDe || '', parcelas: p.parcelas || '',
+        selo: p.selo ? p.selo + (o.selo ? ' • ' + o.selo : '') : o.selo
+      });
+    })
     .sort((a, b) => (a.ordem || 0) - (b.ordem || 0));
 
   const el = (tag, attrs, children) => {

@@ -18,6 +18,8 @@
  *   link            link de afiliado completo. Preservar o afid. Não adicionar UTMs.
  *   cta             texto do botão.
  *   imagem          imagem oficial do curso (em img/). Usar só material do produtor.
+ *   promo           opcional: { selo, preco, precoDe, parcelas, ate }. Até a data "ate" a página
+ *                   mostra o preço promocional; depois volta sozinha ao preço normal.
  *
  * Conferido nas páginas oficiais dos produtores em 28/11/2026.
  */
@@ -77,9 +79,12 @@ window.OFFERS = [
       'Estratégias para vender sem aparecer',
       'Suporte na área de membros e acesso por 2 anos'
     ],
-    preco: 'R$ 47',
-    precoDe: 'R$ 149,99',
-    parcelas: 'ou 9x de R$ 6,18',
+    // Preço normal (volta sozinho quando a promoção acaba)
+    preco: 'R$ 149,99',
+    precoDe: '',
+    parcelas: '',
+    // Black Friday: vale até a data/hora de "ate" (horário de Brasília). Para encerrar antes, apague o bloco promo.
+    promo: { selo: 'Black Friday', preco: 'R$ 47', precoDe: 'R$ 149,99', parcelas: 'ou 9x de R$ 6,18', ate: '2026-11-30T23:59:00-03:00' },
     precoConfirmado: true,
     garantia: false,
     link: 'https://kiwify.app/m0mn4dS?afid=ANrYBM87',
