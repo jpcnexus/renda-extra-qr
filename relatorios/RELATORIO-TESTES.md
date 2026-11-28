@@ -77,3 +77,11 @@ Imagens oficiais usadas: mockup do produto (IA), mockup do app (MOV), "Plataform
 
 QR: mesma URL e mesmo código (não precisa reimprimir por troca de curso). Arte 10x15 redesenhada (fundo escuro, moldura laranja "APONTE A CÂMERA AQUI"), QR preto no branco com margem de 4 módulos; decodificado a 300 e ~72 dpi.
 Testes automáticos: todos passaram.
+
+### Publicação — 28/11/2026 (autorizada pela proprietária)
+
+Enviados pelo conector da Hostinger para `/home/u973852786/domains/rendaextra.nexusjpc.com.br/public_html` (site addon com pasta própria): `index.html`, `offers.js`, `app.js`, `styles.css`, `img/mov.webp`, `img/videos-ia.webp`, `img/shopee.webp`. Nada foi apagado (os `.svg` antigos ficaram sem uso na pasta). Os outros sites da conta (nexusjpc.com.br, rota360, bilhardourado, calma72, ceia) ficam em `domains/nexusjpc.com.br/public_html` e não foram tocados.
+
+Verificado ao vivo: todos os arquivos publicados idênticos aos do repositório; Chromium em 360/390/768 px sem rolagem horizontal e sem erros; 3 ofertas com links exatos; 3 imagens carregadas; preços R$ 37 / R$ 47 / R$ 47. `nexusjpc.com.br` responde 200. Os subdomínios rota360, bilhardourado, calma72 e ceia não puderam ser abertos deste ambiente (rede).
+
+Rollback: reenviar `index.html`, `offers.js`, `app.js` e `styles.css` do commit `5a336c5` (versão anterior, guardada no Git).
