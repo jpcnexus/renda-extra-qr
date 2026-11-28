@@ -28,8 +28,12 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'PASSOU ' : 'FALHOU ') + 
     p.on('pageerror', e => errors.push(String(e)));
     await ctx.route(/googletagmanager|google-analytics/, r => { gtm.push(r.request().url()); r.fulfill({ status: 200, body: '' }); });
     await ctx.route(/fonts\.g/, r => r.abort());
+    if (!opts.ga) await ctx.route('**/config.js', async r => {
+      const body = fs.readFileSync(path.join(ROOT, 'config.js'), 'utf8').replace(/ga4MeasurementId: '[^']*'/, "ga4MeasurementId: ''");
+      r.fulfill({ status: 200, contentType: 'text/javascript', body });
+    });
     if (opts.ga) await ctx.route('**/config.js', async r => {
-      const body = fs.readFileSync(path.join(ROOT, 'config.js'), 'utf8').replace("ga4MeasurementId: ''", "ga4MeasurementId: 'G-TESTE123'");
+      const body = fs.readFileSync(path.join(ROOT, 'config.js'), 'utf8').replace(/ga4MeasurementId: '[^']*'/, "ga4MeasurementId: 'G-TESTE123'");
       r.fulfill({ status: 200, contentType: 'text/javascript', body });
     });
     return { ctx, p, errors, gtm, kiwi };

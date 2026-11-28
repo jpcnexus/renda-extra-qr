@@ -7,7 +7,7 @@
  * institucionalUrl: site institucional da Nexus JPC (vazio = sem link).
  */
 window.SITE_CONFIG = {
-  ga4MeasurementId: '',
+  ga4MeasurementId: 'G-7R7MP9ELC5',
   institucionalUrl: '',
   // Marcador do QR impresso. Não alterar depois de imprimir.
   qr: { utm_source: 'ponto_onibus', utm_medium: 'qr', utm_campaign: 'renda_extra' }
