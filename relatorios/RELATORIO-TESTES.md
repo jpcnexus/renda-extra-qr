@@ -85,3 +85,8 @@ Enviados pelo conector da Hostinger para `/home/u973852786/domains/rendaextra.ne
 Verificado ao vivo: todos os arquivos publicados idênticos aos do repositório; Chromium em 360/390/768 px sem rolagem horizontal e sem erros; 3 ofertas com links exatos; 3 imagens carregadas; preços R$ 37 / R$ 47 / R$ 47. `nexusjpc.com.br` responde 200. Os subdomínios rota360, bilhardourado, calma72 e ceia não puderam ser abertos deste ambiente (rede).
 
 Rollback: reenviar `index.html`, `offers.js`, `app.js` e `styles.css` do commit `5a336c5` (versão anterior, guardada no Git).
+
+### Publicação — Analytics e preço promocional (28/11/2026, autorizada)
+
+Enviados `offers.js`, `app.js`, `config.js` (GA4 `G-7R7MP9ELC5`). Verificado ao vivo: arquivos idênticos ao repositório; aviso de cookies aparece; recusa = nenhuma requisição ao Google e nenhum cookie `_ga`; aceite com URL do QR = tag `G-7R7MP9ELC5` solicitada, `qr_visit` e `offer_click` (`offer_id=mov`, `traffic_origin=qr`) registrados no dataLayer. Shopee mostra "Black Friday • R$ 47" até 30/11/2026 23h59 e volta sozinha a R$ 149,99 depois (testado simulando datas).
+Não verificado daqui: a chegada dos eventos no painel do GA4 (o servidor do Google é bloqueado neste ambiente) — conferir em Relatórios → Tempo real.
