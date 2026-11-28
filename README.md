@@ -15,7 +15,7 @@ Projeto da Nexus JPC — Soluções Digitais. HTML, CSS e JavaScript puros: sem 
 | `public/app.js` | Renderiza ofertas, consentimento, eventos GA4 | Sim |
 | `public/styles.css` | Estilos | Sim |
 | `public/privacidade.html` | Política de privacidade | Sim |
-| `public/img/` | Ilustrações próprias dos cards | Sim |
+| `public/img/` | Imagens oficiais dos cursos (material dos produtores) | Sim |
 | `public/.htaccess` | Cache curto, sem listagem, bloqueio de arquivos ocultos (só esta pasta) | Sim |
 | `publicar/renda-extra-ponto-site.zip` | Pacote pronto com o conteúdo de `public/` | Enviar e extrair |
 | `material/` | QR (SVG/PNG) e arte 10x15 cm (SVG/PDF/PNG) | **Não** |

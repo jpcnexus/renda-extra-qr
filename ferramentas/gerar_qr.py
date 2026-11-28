@@ -24,26 +24,38 @@ inner = buf.getvalue().decode()
 inner = inner[inner.index('>') + 1: inner.rindex('</svg>')]
 
 W, H = 100, 150          # mm
-Q = 68                   # lado do QR em mm (com margem branca)
-qx, qy = (W - Q) / 2, 56
+Q = 56                   # lado do QR em mm (inclui a margem branca de 4 módulos)
+qx, qy = (W - Q) / 2, 72
 s = Q / n
+F = 'Arial Black, Arial, Helvetica, sans-serif'
+F2 = 'Arial, Helvetica, sans-serif'
 
 arte = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{W}mm" height="{H}mm" viewBox="0 0 {W} {H}">
-  <rect width="{W}" height="{H}" fill="#FFF3E3"/>
-  <rect x="4" y="4" width="{W-8}" height="{H-8}" rx="5" fill="none" stroke="#F28C28" stroke-width="1.2"/>
-  <g font-family="Arial, Helvetica, sans-serif" fill="#1F120C" text-anchor="middle">
-    <text x="{W/2}" y="20" font-size="7.6" font-weight="700">ESPERANDO O ÔNIBUS?</text>
-    <text x="{W/2}" y="31" font-size="5">Conheça 3 possibilidades de aprender</text>
-    <text x="{W/2}" y="37.5" font-size="5">sobre renda extra pela internet.</text>
-    <text x="{W/2}" y="49" font-size="4.6" font-weight="700" fill="#B85C0A">Aponte a câmera do celular e descubra.</text>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="0%" r="110%">
+      <stop offset="0" stop-color="#1B2A3A"/><stop offset=".65" stop-color="#101820"/>
+    </radialGradient>
+  </defs>
+  <rect width="{W}" height="{H}" fill="url(#bg)"/>
+  <!-- selo -->
+  <rect x="{W/2-34}" y="7" width="68" height="9" rx="4.5" fill="#4ADE80"/>
+  <text x="{W/2}" y="13.3" font-family="{F2}" font-size="4.4" font-weight="700" fill="#052E16" text-anchor="middle">ESPERANDO O ÔNIBUS?</text>
+  <!-- título -->
+  <g font-family="{F}" font-weight="900" text-anchor="middle">
+    <text x="{W/2}" y="28" font-size="9" fill="#F8FAFC">Aprenda a vender</text>
+    <text x="{W/2}" y="38.5" font-size="9" fill="#F8FAFC">pela internet</text>
+    <text x="{W/2}" y="49" font-size="8" fill="#F97316">usando só o celular</text>
   </g>
-  <rect x="{qx-1}" y="{qy-1}" width="{Q+2}" height="{Q+2}" rx="2" fill="#fff"/>
+  <text x="{W/2}" y="56.5" font-family="{F2}" font-size="4.2" fill="#CBD5E1" text-anchor="middle">3 cursos práticos • veja em 1 minuto</text>
+  <!-- moldura do QR -->
+  <rect x="{qx-3}" y="{qy-9.5}" width="{Q+6}" height="{Q+12.5}" rx="4" fill="#F97316"/>
+  <text x="{W/2}" y="{qy-3.6}" font-family="{F}" font-size="4.2" font-weight="900" fill="#1A0E05" text-anchor="middle">APONTE A CÂMERA AQUI ↓</text>
+  <rect x="{qx}" y="{qy}" width="{Q}" height="{Q}" rx="1.5" fill="#fff"/>
   <g transform="translate({qx} {qy}) scale({s})">{inner}</g>
-  <g font-family="Arial, Helvetica, sans-serif" fill="#1F120C" text-anchor="middle">
-    <text x="{W/2}" y="{qy+Q+8}" font-size="4.6" font-weight="700">{CURTA}</text>
-    <text x="{W/2}" y="{H-11}" font-size="3.3" fill="#3A2218">Treinamentos pagos de terceiros. Um projeto da Nexus JPC.</text>
-  </g>
+  <!-- rodapé -->
+  <text x="{W/2}" y="{qy+Q+10}" font-family="{F2}" font-size="4.8" font-weight="700" fill="#F8FAFC" text-anchor="middle">{CURTA}</text>
+  <text x="{W/2}" y="{H-4}" font-family="{F2}" font-size="2.9" fill="#94A3B8" text-anchor="middle">Cursos pagos de terceiros. Um projeto da Nexus JPC.</text>
 </svg>
 '''
 (OUT / 'renda-extra-ponto-arte-10x15.svg').write_text(arte, encoding='utf-8')

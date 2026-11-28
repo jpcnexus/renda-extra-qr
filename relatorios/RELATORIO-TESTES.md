@@ -62,3 +62,18 @@ Publicado pela proprietária em `https://rendaextra.nexusjpc.com.br/` (pasta pub
 6. Verificação pós-deploy (passo 6). Se a URL final for diferente, regenerar QR e arte.
 7. Imprimir uma prova 10x15 cm, escanear em Android e iPhone e só então imprimir o lote.
 8. Obter autorização da administração de cada ponto antes de afixar.
+
+## Atualização de ofertas — 28/11/2026
+
+A pedido da proprietária: Canva Lucrativo e PVA substituídos por MOV (`kiwify.app/cdH39sl?afid=F64hqxZa`) e Vídeos de IA que Vendem 2.0 (`kiwify.app/m7fQ44k?afid=oQhdXQjt`). Shopee mantido.
+
+Conferido nas páginas oficiais dos produtores (destino final de cada link de afiliado):
+- MOV — Método Orgânico Viral (Fabíola Casanova e Eloah): de R$ 197 por R$ 37; garantia de 7 dias; acesso imediato.
+- Vídeos de IA que Vendem 2.0 (Andrea Januário): de R$ 197,00 por R$ 47 ou 10x de R$ 5,65; pagamento único; garantia de 7 dias.
+- Método Lucrando com a Shopee (Alex Coelho): de R$ 149,99 por R$ 47 ou 9x de R$ 6,18 ("Black Friday, válida somente hoje"); 160+ videoaulas; acesso por 2 anos; suporte na área de membros. Garantia não mencionada na página → não exibida.
+
+Página: tema escuro de alto contraste (paleta do briefing), atalhos com preço no topo, cards com imagem oficial, selo factual, preço de/por, CTA laranja e linha de confiança. Sem contadores, sem depoimentos de ganho, sem promessa de prazo de venda (mesmo quando a página do produtor promete).
+Imagens oficiais usadas: mockup do produto (IA), mockup do app (MOV), "Plataforma por dentro" (Shopee). Prints de ganhos da página do produtor foram descartados.
+
+QR: mesma URL e mesmo código (não precisa reimprimir por troca de curso). Arte 10x15 redesenhada (fundo escuro, moldura laranja "APONTE A CÂMERA AQUI"), QR preto no branco com margem de 4 módulos; decodificado a 300 e ~72 dpi.
+Testes automáticos: todos passaram.
